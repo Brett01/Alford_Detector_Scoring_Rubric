@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSW75100 — Research Proposal Grading Rubric</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+  :root{
+    --navy:#1B2A4A;
+    --navy-deep:#101A30;
+    --purple:#6C2B7F;
+    --purple-soft:#8B4EA0;
+    --cream:#FAF8F4;
+    --paper:#FFFFFF;
+    --ink:#242B38;
+    --ink-soft:#5C6577;
+    --line:#DEDAD1;
+    --good:#3F7A5C;
+    --mid:#B8863B;
+    --low:#A4452F;
+    --shadow: 0 1px 2px rgba(27,42,74,.06), 0 8px 24px rgba(27,42,74,.06);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:0 0 80px 0;
+  }
+
+  ::selection{background:var(--purple-soft);color:#fff;}
+
+  .top-attribution-inline{
+    color:#C9B8D6; font-size:17px; font-weight:600; line-height:1.5;
+    margin:22px 0 18px; letter-spacing:.01em; text-align:right;
+  }
+  .top-attribution-inline a{color:#fff; text-decoration:underline;}
+
+  header.masthead{
+    background:linear-gradient(180deg,var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:18px 32px 26px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.masthead::after{
+    content:"";
+    position:absolute; right:-60px; top:-60px;
+    width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, var(--purple-soft), transparent 70%);
+    opacity:.35;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:#C9B8D6; margin:0 0 8px;
+  }
+  h1{
+    font-family:'Source Serif 4',serif;
+    font-weight:700;
+    font-size:clamp(24px,3vw,32px);
+    margin:0 0 6px;
+    letter-spacing:-.01em;
+  }
+  .title-input{
+    display:block; width:100%; max-width:100%;
+    font-family:'Source Serif 4',serif; font-weight:700; color:#fff;
+    font-size:clamp(22px,3vw,36px); letter-spacing:-.01em;
+    margin:0 0 8px; padding:2px 0; background:transparent; border:none; border-bottom:1px dashed transparent;
+  }
+  .title-input:hover, .title-input:focus{border-bottom-color:rgba(255,255,255,.35); outline:none;}
+  .title-input::placeholder{color:#8C96B0;}
+
+  .header-fields{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px;}
+  .instructor-input{
+    font-family:Arial, Helvetica, sans-serif; font-size:16px; letter-spacing:.01em;
+    color:#D6CBE0; background:transparent; border:none; border-bottom:1px dashed transparent;
+    padding:4px 0; min-width:340px; flex:1 1 340px; max-width:480px;
+  }
+  .instructor-input:hover, .instructor-input:focus{border-bottom-color:rgba(214,203,224,.5); outline:none;}
+  .instructor-input::placeholder{color:#8C96B0;}
+  .header-sep{font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#8C96B0;}
+  .header-select{
+    font-family:Arial, Helvetica, sans-serif; font-size:16px; letter-spacing:.01em;
+    color:#D6CBE0; background:var(--navy-deep); border:1px solid rgba(255,255,255,.15); border-radius:4px;
+    padding:5px 9px; cursor:pointer;
+  }
+  .header-select:hover, .header-select:focus{border-color:rgba(255,255,255,.4); outline:none;}
+  .sub{color:#B9C2D6; font-size:14px; max-width:620px; line-height:1.5;}
+
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+
+  .toolbar{
+    display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap;
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px; margin-top:-28px; box-shadow:var(--shadow);
+    position:relative; z-index:2;
+  }
+  .field{display:flex; flex-direction:column; gap:5px;}
+  .field label{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); font-weight:600;}
+  .field input, .field select{
+    font-family:'Inter',sans-serif; font-size:14px; padding:8px 10px;
+    border:1px solid var(--line); border-radius:6px; background:#fff; color:var(--ink);
+    min-width:180px;
+  }
+  .field input:focus, .field select:focus{outline:2px solid var(--purple-soft); outline-offset:1px;}
+
+  .btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    border:none; border-radius:6px; padding:10px 18px; cursor:pointer;
+    transition:transform .08s ease, box-shadow .15s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--purple); color:#fff;}
+  .btn-primary:hover{background:#5A2369;}
+  .btn-ghost{background:transparent; color:var(--navy); border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--navy);}
+  .btn-danger{color:var(--low); border-color:#E5C9C0;}
+  .btn-danger:hover{background:var(--low); color:#fff; border-color:var(--low);}
+  .btn:focus-visible{outline:2px solid var(--purple-soft); outline-offset:2px;}
+
+  /* Progress ribbon — signature element */
+  .ribbon{
+    margin:26px 0 6px; background:var(--paper); border:1px solid var(--line);
+    border-radius:10px; padding:16px 20px; box-shadow:var(--shadow);
+  }
+  .ribbon-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;}
+  .ribbon-head .label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);}
+  .ribbon-head .score{font-family:'Source Serif 4',serif; font-size:22px; font-weight:700; color:var(--navy);}
+  .ribbon-head .score span{font-size:14px; color:var(--ink-soft); font-weight:400; font-family:'Inter',sans-serif;}
+  .current-tier-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line);}
+  .in-progress-note{font-size:11.5px; color:var(--ink-soft); line-height:1.4;}
+  .segbar{display:flex; height:14px; border-radius:7px; overflow:hidden; background:#EFEBE2; border:1px solid var(--line);}
+  .seg{height:100%; transition:width .3s ease;}
+  .seg-legend{display:flex; flex-wrap:wrap; gap:12px; margin-top:10px;}
+  .seg-legend .item{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--ink-soft);}
+  .seg-legend .dot{width:9px;height:9px;border-radius:2px;}
+
+  /* Tabs */
+  .tabs{display:flex; gap:6px; margin:22px 0 0; overflow-x:auto; padding-bottom:2px;}
+  .tab{
+    flex:0 0 auto; padding:9px 14px; font-size:12.5px; font-weight:600;
+    border-radius:8px 8px 0 0; cursor:pointer; color:var(--ink-soft);
+    background:transparent; border:1px solid transparent; border-bottom:none;
+    white-space:nowrap;
+  }
+  .tab.active{background:var(--paper); color:var(--navy); border-color:var(--line); box-shadow:0 -2px 0 var(--purple) inset;}
+  .tab .pts{font-family:'IBM Plex Mono',monospace; color:var(--purple); margin-left:5px;}
+
+  .panel{
+    background:var(--paper); border:1px solid var(--line); border-radius:0 10px 10px 10px;
+    padding:22px 24px 24px; box-shadow:var(--shadow);
+  }
+  .panel h2{
+    font-family:'Source Serif 4',serif; font-size:19px; margin:0 0 4px; color:var(--navy);
+  }
+  .panel .desc{font-size:13px; color:var(--ink-soft); margin:0 0 18px; max-width:640px; line-height:1.5;}
+
+  .criterion{
+    border-top:1px solid var(--line); padding:16px 0;
+  }
+  .criterion:first-of-type{border-top:none; padding-top:4px;}
+  .crit-top{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:6px 10px; margin-bottom:6px;}
+  .crit-name{font-weight:600; font-size:14px; color:var(--ink); flex:1 1 auto; min-width:0; word-wrap:break-word; overflow-wrap:break-word;}
+  .crit-max{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); flex-shrink:0; white-space:nowrap;}
+  .crit-hint{font-size:12.5px; color:var(--ink-soft); margin:0 0 10px; line-height:1.5; word-wrap:break-word; overflow-wrap:break-word;}
+
+  .levels{display:flex; gap:6px; flex-wrap:wrap;}
+  .level-btn{
+    font-size:12.5px; font-weight:600; padding:7px 12px; border-radius:6px;
+    border:1px solid var(--line); background:#fff; color:var(--ink-soft); cursor:pointer;
+  }
+  .level-btn:hover{border-color:var(--purple-soft);}
+  .level-btn.sel{background:var(--navy); color:#fff; border-color:var(--navy);}
+
+  .score-row{display:flex; align-items:center; gap:10px; margin-top:10px;}
+  .score-row input[type=number]{
+    width:64px; font-family:'IBM Plex Mono',monospace; font-size:14px; text-align:center;
+    padding:6px 4px; border:1px solid var(--line); border-radius:6px;
+  }
+  .score-row .of{font-size:12px; color:var(--ink-soft);}
+
+  .crit-points-badge{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700; color:var(--purple);
+    background:#F5EEFA; border-radius:20px; padding:1px 8px; margin-left:8px; vertical-align:middle;
+  }
+  .custom-levels{display:flex; flex-direction:column; gap:8px; margin-top:12px;}
+  .custom-level-row{
+    display:flex; align-items:flex-start; gap:10px; padding:10px 12px; border-radius:8px;
+    border:1px solid var(--line); cursor:pointer; background:#fff;
+    transition:background .12s ease, border-color .12s ease;
+  }
+  .custom-level-row:hover{border-color:var(--purple-soft); background:#FAF7FF;}
+  .custom-level-row.checked{background:#F5EEFA; border-color:var(--purple-soft);}
+  .custom-level-radio{font-size:15px; color:var(--purple); flex-shrink:0; line-height:1.4;}
+  .custom-level-text{font-size:13px; color:var(--ink); line-height:1.5;}
+  .score-line{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
+  }
+
+  .extra-credit-row{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:16px; padding-top:14px;
+    border-top:1px dashed var(--line);
+  }
+  .extra-credit-row label{font-size:12.5px; font-weight:600; color:var(--purple); white-space:nowrap;}
+  .extra-credit-row input{
+    width:64px; font-family:'IBM Plex Mono',monospace; font-size:14px; text-align:center;
+    padding:6px 4px; border:1px solid var(--purple-soft); border-radius:6px;
+  }
+  .extra-credit-hint{font-size:11.5px; color:var(--ink-soft); max-width:420px; line-height:1.4;}
+
+  .assessment-box{margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);}
+  .assessment-title{font-size:12.5px; font-weight:700; color:var(--navy); margin:0 0 10px;}
+  .assessment-row{
+    display:flex; align-items:flex-start; gap:10px; padding:10px 12px; border-radius:8px;
+    border:1px solid var(--line); margin-bottom:8px; cursor:pointer; background:#fff;
+    transition:background .12s ease, border-color .12s ease;
+  }
+  .assessment-row:hover{border-color:var(--purple-soft); background:#FAF7FF;}
+  .assessment-row.checked{background:#F5EEFA; border-color:var(--purple-soft);}
+  .assessment-checkbox{font-size:16px; line-height:1.3; color:var(--purple); flex-shrink:0;}
+  .assessment-emoji{font-size:15px; flex-shrink:0; line-height:1.4;}
+  .assessment-text{font-size:13px; color:var(--ink); line-height:1.5;}
+  .assessment-extra-field{display:flex; align-items:center; gap:8px; margin-top:10px; flex-wrap:wrap;}
+  .assessment-extra-field label{font-size:12.5px; font-weight:600; color:var(--navy); white-space:nowrap;}
+  .assessment-extra-field input{
+    flex:1; min-width:220px; font-family:'Inter',sans-serif; font-size:13px; padding:7px 10px;
+    border:1px solid var(--line); border-radius:6px; border-bottom:2px solid var(--purple-soft);
+  }
+  .panel-foot{
+    margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .panel-foot .total{font-family:'Source Serif 4',serif; font-weight:700; font-size:16px; color:var(--navy);}
+  .instructor-feedback-label{display:block; font-size:12.5px; font-weight:700; color:var(--navy); margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);}
+  textarea.notes{
+    width:100%; min-height:60px; margin-top:8px; font-family:'Inter',sans-serif; font-size:13px;
+    border:1px solid var(--line); border-radius:6px; padding:10px; resize:vertical; color:var(--ink);
+  }
+  textarea.notes::placeholder{color:#9AA0AC;}
+
+  .import-box{
+    border:1px solid var(--line); border-radius:8px; padding:12px 14px; margin-bottom:18px;
+    background:#FAF7FF;
+  }
+  .import-box summary{
+    cursor:pointer; font-weight:600; font-size:13px; color:var(--purple);
+    list-style:none; display:flex; align-items:center; gap:8px;
+  }
+  .import-box summary::-webkit-details-marker{display:none;}
+  .import-box summary::before{content:"▸"; font-size:11px; color:var(--purple);}
+  .import-box[open] summary::before{content:"▾";}
+  .import-badge{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase;
+    padding:2px 7px; border-radius:20px; background:var(--good); color:#fff; font-weight:700;
+  }
+  .import-badge.empty{background:#DEDAD1; color:var(--ink-soft);}
+  .import-textarea{min-height:120px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; line-height:1.6;}
+
+  .import-actions{display:flex; align-items:center; gap:10px; margin:12px 0; flex-wrap:wrap;}
+  .file-btn{
+    display:inline-block; font-size:12.5px; padding:7px 13px; cursor:pointer;
+    background:#fff; color:var(--navy); border:1px solid var(--purple-soft);
+  }
+  .file-btn:hover{background:var(--purple); color:#fff; border-color:var(--purple);}
+  .import-file-status{font-size:12px; color:var(--good);}
+  .import-file-status.error{color:var(--low);}
+
+  .template-box{
+    background:#F0F3F9; border-color:#D3DBEA;
+  }
+  .template-box summary{color:var(--navy);}
+  .template-box summary::before{color:var(--navy);}
+  .template-badge{background:var(--navy) !important;}
+  .template-file-btn{border-color:var(--navy);}
+  .template-file-btn:hover{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .template-textarea{min-height:90px;}
+
+  .ai-row{display:flex; align-items:center; gap:12px; margin-top:12px; flex-wrap:wrap;}
+  .btn-ai{
+    background:linear-gradient(135deg, var(--purple), var(--purple-soft));
+    color:#fff; font-size:12.5px; padding:8px 14px; white-space:nowrap;
+  }
+  .btn-ai:hover{filter:brightness(1.05);}
+  .btn-ai:disabled{background:#DEDAD1; color:#9AA0AC; cursor:not-allowed;}
+  .ai-hint{font-size:11.5px; color:var(--ink-soft); line-height:1.4; max-width:420px;}
+  .ai-error{font-size:12px; color:var(--low); margin:10px 0 0;}
+
+  .ai-suggestion{
+    display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+    background:#F5EEFA; border:1px solid #E4D4EE; border-radius:6px; padding:8px 10px; margin-bottom:10px;
+  }
+  .ai-suggestion-badge{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; color:var(--purple);
+    white-space:nowrap;
+  }
+  .ai-suggestion-text{font-size:12.5px; color:var(--ink); flex:1; min-width:150px;}
+  .ai-apply{
+    font-size:11px; font-weight:600; color:var(--purple); background:#fff; border:1px solid var(--purple-soft);
+    border-radius:5px; padding:3px 9px; cursor:pointer;
+  }
+  .ai-apply:hover{background:var(--purple); color:#fff;}
+
+  /* CITI pass/fail row */
+  .citi-row{display:flex; align-items:center; gap:10px; padding:12px 0;}
+
+  .bonus-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:10px; margin-top:14px;}
+  .bonus-row{display:flex; flex-direction:column; gap:5px; background:#FAF7EE; border:1px solid #EBE2C8; border-radius:8px; padding:10px 12px;}
+  .bonus-row label{font-size:11.5px; font-weight:600; color:var(--mid);}
+  .bonus-row input{
+    width:100%; font-family:'IBM Plex Mono',monospace; font-size:14px; text-align:center;
+    padding:6px 4px; border:1px solid #EBE2C8; border-radius:6px;
+  }
+  .citi-row input{width:18px;height:18px;}
+
+  /* Roster */
+  .roster{margin-top:30px;}
+  .roster-head{display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;}
+  .roster-head-actions{display:flex; gap:8px; flex-wrap:wrap; justify-content:center;}
+  .save-file-status{font-size:12px; color:var(--ink-soft); text-align:center; margin:10px 0 0;}
+  .roster h2{font-family:'Source Serif 4',serif; font-size:19px; color:var(--navy); margin:0 0 4px;}
+  .roster .desc{font-size:13px;color:var(--ink-soft);margin:0 auto 14px; max-width:560px;}
+  .manage-roster-box{
+    background:#FAF7FF; border:1px solid #E4D4EE; border-radius:8px; padding:14px 16px; margin-bottom:16px;
+  }
+  .manage-roster-form{display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .manage-roster-form input[type=text]{
+    flex:1; min-width:200px; font-family:'Inter',sans-serif; font-size:13px; padding:8px 10px;
+    border:1px solid var(--line); border-radius:6px;
+  }
+  .manage-roster-form select{
+    font-family:'Inter',sans-serif; font-size:13px; padding:8px 10px; border:1px solid var(--line); border-radius:6px;
+  }
+  table.roster-table{width:100%; border-collapse:collapse; background:var(--paper); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  table.roster-table th{
+    background:var(--navy); color:#fff; text-align:left; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.05em; padding:10px 12px; font-weight:600;
+  }
+  table.roster-table td{padding:10px 12px; font-size:13.5px; border-top:1px solid var(--line);}
+  table.roster-table tr:hover td{background:#FAF7FF;}
+  .grade-pill{
+    display:inline-block; padding:2px 9px; border-radius:20px; font-size:11.5px; font-weight:700;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .empty-row td{color:var(--ink-soft); font-style:italic; text-align:center; padding:22px;}
+  .del-btn{background:none;border:none;color:var(--low);cursor:pointer;font-size:12px;font-weight:600; margin-right:8px;}
+  .clear-btn{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:12px;font-weight:600;}
+  .report-btn{
+    background:none;border:1px solid var(--navy);color:var(--navy);cursor:pointer;font-size:11.5px;font-weight:600;
+    padding:3px 9px; border-radius:5px; margin-right:8px;
+  }
+  .report-btn:hover{background:var(--navy); color:#fff;}
+
+  footer.note{max-width:980px; margin:26px auto 0; padding:0 24px; font-size:11.5px; color:var(--ink-soft); line-height:1.6;}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="top-attribution-inline">This rubric application was developed by Sabretta Alford, Ph.D., MPhil, LMSW (InsightBridge LLC©, <a href="https://sabrettaalford.com">sabrettaalford.com</a>).</p>
+    <input type="text" id="courseTitleInput" class="title-input" value="SSW75100 — Research Proposal Grading Rubric" aria-label="Course title">
+    <div class="header-fields">
+      <input type="text" id="instructorNameInput" class="instructor-input" value="Sabretta G. Alford, Ph.D., MPhil, LMSW" aria-label="Instructor name" placeholder="Instructor name">
+      <span class="header-sep">·</span>
+      <select id="semesterSelect" class="header-select" aria-label="Semester">
+        <option value="Fall" selected>Fall</option>
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
+      </select>
+      <span class="header-sep">Semester ·</span>
+      <select id="sectionSelect" class="header-select" aria-label="Section">
+        <option value="">Section —</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="field">
+      <label for="studentName">Student name</label>
+      <input id="studentName" list="studentList" type="text" placeholder="Start typing or pick from roster">
+      <datalist id="studentList"></datalist>
+    </div>
+    <div class="field">
+      <label for="studentGroup">Presentation group</label>
+      <select id="studentGroup">
+        <option value="">—</option>
+        <option value="Group 1">Group 1</option>
+        <option value="Group 2">Group 2</option>
+      </select>
+    </div>
+    <span id="rosterProgress" style="font-size:12px; color:var(--ink-soft); align-self:center;"></span>
+    <button class="btn btn-ghost" id="resetBtn" type="button">Clear scores</button>
+    <button class="btn btn-primary" id="saveBtn" type="button">Add to roster</button>
+    <button class="btn btn-ghost" id="importRosterBtnTop" type="button">Import roster</button>
+    <button class="btn btn-ghost" id="exportBtn" type="button">Export roster (CSV)</button>
+  </div>
+
+  <div class="ribbon">
+    <div class="ribbon-head">
+      <span class="label">Current proposal score</span>
+      <span class="score" id="grandTotal">0<span> / 100 pts</span></span>
+    </div>
+    <div class="segbar" id="segbar"></div>
+    <div class="seg-legend" id="segLegend"></div>
+    <div class="current-tier-row" id="currentTierPill"></div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="panel" id="panel"></div>
+
+  <div class="roster">
+    <div class="roster-head">
+      <div>
+        <h2>Class roster</h2>
+        <p class="desc">Import your class list below, or use "Manage class list" to add students one at a time — then score a proposal above, select the student's name, and click "Add to roster" to record it.</p>
+      </div>
+      <div class="roster-head-actions">
+        <button type="button" class="btn btn-primary" id="saveToFileBtn">💾 Save as file</button>
+        <button type="button" class="btn btn-ghost" id="loadFromFileBtn">📂 Load from file</button>
+        <input type="file" id="loadFromFileInput" accept=".json" style="display:none;">
+        <button type="button" class="btn btn-ghost" id="importRosterBtn">📋 Import roster</button>
+        <button type="button" class="btn btn-ghost" id="exportRosterBtnBottom">📤 Export roster (CSV)</button>
+        <button type="button" class="btn btn-ghost" id="manageRosterBtn">✎ Manage class list</button>
+        <button type="button" class="btn btn-ghost btn-danger" id="clearRosterBtn">🗑 Clear roster</button>
+      </div>
+    </div>
+    <p class="save-file-status" id="saveFileStatus"></p>
+    <div class="manage-roster-box" id="importRosterBox" style="display:none;">
+      <p class="crit-hint" style="margin:0 0 12px;">Upload a class list (.csv or .xlsx) or paste names below to add many students at once. Existing students and scores are kept — this only adds new names, it never overwrites anyone.</p>
+      <div class="import-actions" style="margin-bottom:12px;">
+        <label class="btn btn-ghost file-btn" for="rosterFileInput">📄 Upload roster file (.csv, .xlsx)</label>
+        <input type="file" id="rosterFileInput" accept=".csv,.xlsx,.xls" style="display:none;">
+        <span class="import-file-status" id="rosterFileStatus"></span>
+      </div>
+      <p class="crit-hint" style="margin:12px 0 6px;">Or paste one student per line — optionally add a group after a comma, e.g. "Jordan Lee, Group 1":</p>
+      <textarea id="rosterPasteBox" class="notes" style="min-height:100px;" placeholder="Jordan Lee, Group 1&#10;Sam Rivera&#10;Amina Yusuf, Group 2"></textarea>
+      <div style="margin-top:10px;">
+        <button type="button" class="btn btn-primary" id="importPastedRosterBtn">+ Import pasted names</button>
+      </div>
+    </div>
+    <div class="manage-roster-box" id="manageRosterBox" style="display:none;">
+      <p class="crit-hint" style="margin:0 0 12px;">Add a new student to the class list, or remove one who's no longer in the course. This changes who shows up in the table below — it doesn't affect any scores already recorded.</p>
+      <div class="manage-roster-form">
+        <input type="text" id="newStudentName" placeholder="New student's full name">
+        <select id="newStudentGroup">
+          <option value="">No group yet</option>
+          <option value="Group 1">Group 1</option>
+          <option value="Group 2">Group 2</option>
+        </select>
+        <button type="button" class="btn btn-primary" id="addStudentBtn">+ Add to class list</button>
+      </div>
+    </div>
+    <table class="roster-table">
+      <thead>
+        <tr><th>Student</th><th>Group</th><th>Total</th><th>Grade tier</th><th></th></tr>
+      </thead>
+      <tbody id="rosterBody">
+        <tr class="empty-row"><td colspan="5">No students added yet — score a proposal above, then click "Add to roster."</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+/* ---------- Rubric definition (derived from syllabus assignment descriptions) ---------- */
+const RUBRIC = [
+  {
+    id: 'topic',
+    tabLabel: 'Topic & Questions',
+    title: 'Developing Your Topic for the Research Proposal',
+    max: 5,
+    desc: 'Students identify a research topic, develop research questions, and correctly identify the independent and dependent variables.',
+    criteria: [
+      { name: 'Research question clarity & relevance to social work practice/policy', max: 2,
+        hint: 'Is the topic well-defined, feasible, and clearly tied to a social work concern?' },
+      { name: 'Correct identification of Independent (IV) and Dependent (DV) Variables', max: 3,
+        hint: 'Are IV/DV accurately identified and clearly distinguished?' }
+    ],
+    assessmentOptions: [
+      { level: 'needs_improvement', emoji: '🔴', label: 'Needs Improvement',
+        text: 'You have the beginning of a research idea, but the topic and/or variables need further development before moving forward. Focus on clarifying what you want to study, the IV, the DV, and how your questions connect to them.' },
+      { level: 'good', emoji: '🟡', label: 'Good',
+        text: 'You have developed a solid research direction. Your topic, variables, and questions are generally clear, but some areas need to be narrowed, clarified, or better aligned.' },
+      { level: 'excellent', emoji: '🟢', label: 'Excellent',
+        text: 'You have developed a clear and researchable topic with appropriately identified variables. Your main research question and subquestions are focused, logically connected, and provide a strong foundation for the next stage of the research process.' }
+    ]
+  },
+  {
+    id: 'intro',
+    tabLabel: 'Intro & Problem Statement',
+    title: 'Introduction & Problem Statement',
+    max: 15,
+    desc: 'A typed statement outlining the group\u2019s chosen research problem, with background, significance, and at least three pages of supporting data or sources.',
+    criteria: [
+      { name: 'Background & social relevance of the problem', max: 5,
+        hint: 'Clear, well-supported background establishing why this problem matters.' },
+      { name: 'Significance for social work practice, policy, and research', max: 5,
+        hint: 'Explicit connection drawn to practice, policy, and the research literature.' },
+      { name: 'Depth & quality of supporting data/sources (min. 3 pages) + APA citations', max: 5,
+        hint: 'Sufficient, credible, properly cited evidence demonstrating the topic\u2019s relevance.' }
+    ],
+    assessmentOptions: [
+      { level: 'needs_improvement', emoji: '🔴', label: 'Needs Improvement',
+        text: 'You have identified a general research area, but the introduction and problem statement need further development. Focus on clearly establishing the problem, supporting it with research, identifying who is affected, and explaining why the problem requires further study.' },
+      { level: 'good', emoji: '🟡', label: 'Good',
+        text: 'You have developed a clear introduction and identifiable research problem. The section would be stronger with additional evidence, synthesis, clearer transitions, and/or a more developed explanation of the research gap and significance.' },
+      { level: 'excellent', emoji: '🟢', label: 'Excellent',
+        text: 'Your introduction and problem statement provide a clear, well-supported foundation for the study. The research problem is specific, supported by scholarly evidence, connected to the population, and demonstrates why further research is warranted.' }
+    ]
+  },
+  {
+    id: 'litreview',
+    tabLabel: 'Literature Review',
+    title: 'Literature Review',
+    max: 30,
+    desc: 'An assessment of the literature that describes, summarizes, evaluates, and clarifies prior work, establishing a theoretical foundation and the study\u2019s direction and scope.',
+    criteria: [
+      { name: 'Description & summary of relevant literature', max: 8,
+        hint: 'Accurately represents prior studies\u2019 purpose, methods, and findings.' },
+      { name: 'Critical evaluation & synthesis across sources', max: 8,
+        hint: 'Compares/contrasts studies rather than summarizing them in isolation.' },
+      { name: 'Identifies gaps & how current study builds on prior work', max: 7,
+        hint: 'Clear rationale for how this proposal extends or fills a gap in existing knowledge.' },
+      { name: 'Theoretical foundation, direction, and scope of the study', max: 7,
+        hint: 'Literature is used to ground and justify the proposed study\u2019s scope.' }
+    ],
+    assessmentOptions: [
+      { level: 'needs_improvement', emoji: '🔴', label: 'Needs Improvement',
+        text: 'You have located research related to your topic, but the literature review currently relies too heavily on summarizing individual studies. Focus on organizing the literature into themes, synthesizing multiple sources, identifying patterns across studies, and establishing what is still missing from the research.' },
+      { level: 'good', emoji: '🟡', label: 'Good',
+        text: 'You have developed a solid literature review with relevant scholarly research and identifiable themes. Continue strengthening your synthesis, transitions, critical analysis, and connection between the existing literature and your research gap.' },
+      { level: 'excellent', emoji: '🟢', label: 'Excellent',
+        text: 'You have developed a strong, well-organized, and synthesized literature review. Multiple scholarly sources are effectively connected, clear themes emerge from the research, and the literature logically establishes the gap that supports your proposed study.' }
+    ],
+    assessmentExtraFields: [
+      { id: 'strongest_area', label: 'Strongest Area' }
+    ]
+  },
+  {
+    id: 'methods',
+    tabLabel: 'Methodology',
+    title: 'Research Methodology',
+    max: 10,
+    desc: 'A typewritten description of the methodology: design, sampling, data collection procedures, instruments, and protection of human subjects.',
+    criteria: [
+      { name: 'Research design & rationale', max: 2, hint: 'Appropriate design chosen and justified for the research question.' },
+      { name: 'Sampling plan', max: 2, hint: 'Population, sampling strategy, and sample size are clearly described.' },
+      { name: 'Data collection procedures & instrument(s)', max: 2, hint: 'Instruments and collection procedures are described in sufficient detail.' },
+      { name: 'Measurement of study variables', max: 2, hint: 'Variables are operationalized with attention to validity/reliability.' },
+      { name: 'Protection of human subjects / informed consent form', max: 2, hint: 'Ethical protections and a complete informed consent form are included.' }
+    ],
+    assessmentOptions: [
+      { level: 'needs_improvement', emoji: '🔴', label: 'Needs Improvement',
+        text: 'You have begun developing your methodology, but important details are missing or unclear. Focus on explaining exactly how your hypothetical study would be conducted, including who would participate, how they would be recruited, what data would be collected, how the variables would be measured, and how participants would be protected.' },
+      { level: 'good', emoji: '🟡', label: 'Good',
+        text: 'You have developed a logical and workable methodology that generally aligns with your research question. Some areas need additional detail, particularly regarding the sampling process, data collection procedures, measurement, and/or protection of human subjects.' },
+      { level: 'excellent', emoji: '🟢', label: 'Excellent',
+        text: 'You have developed a clear, realistic, and well-aligned hypothetical methodology. The research design, sampling plan, data collection procedures, measurement strategy, and protection of human subjects are clearly explained and provide a strong plan for conducting the proposed study.' }
+    ]
+  },
+  {
+    id: 'discussion',
+    tabLabel: 'Discussion & Limitations',
+    title: 'Discussion: Limitations & Implications to Social Work Practice',
+    max: 10,
+    desc: 'Expected findings and their implications for policy, practice, or administration; study limitations; and suggestions for future research.',
+    criteria: [
+      { name: 'Expected findings & implications for policy/practice/administration', max: 4,
+        hint: 'Clearly ties anticipated results to concrete social work implications.' },
+      { name: 'Limitations of the study', max: 3, hint: 'Limitations are identified and thoughtfully discussed (required for all proposals).' },
+      { name: 'Future research directions & fit into a larger research agenda', max: 3,
+        hint: 'Suggests meaningful next steps for the field.' }
+    ],
+    assessmentOptions: [
+      { level: 'needs_improvement', emoji: '🔴', label: 'Needs Improvement',
+        text: 'The Discussion section needs further development. Clearly explain what you expect to find, what the findings could mean for social work, and the limitations of your proposed study. Remember that every study has limitations, and acknowledging them strengthens rather than weakens your research proposal.' },
+      { level: 'good', emoji: '🟡', label: 'Good',
+        text: 'You provide a solid discussion of the expected findings and their implications for social work. You have identified limitations, but some need further explanation regarding how they could affect your sample, data collection, findings, or ability to generalize the results.' },
+      { level: 'excellent', emoji: '🟢', label: 'Excellent',
+        text: 'You provide a thoughtful discussion of the anticipated findings and their implications for social work practice, policy, and/or administration. You clearly acknowledge realistic limitations, explain their potential impact on the study, and identify meaningful directions for future research.' }
+    ]
+  },
+  {
+    id: 'finalproposal',
+    tabLabel: 'Final Proposal',
+    title: 'Final Full Research Proposal Upload',
+    max: 10,
+    desc: 'The complete, integrated proposal following the required outline: introduction/problem formulation, literature review, hypothetical methodology, and discussion section.',
+    criteria: [
+      { name: 'Completeness — all required sections present per outline', max: 4,
+        hint: 'Proposals that do not follow the outline may be returned for revision.' },
+      { name: 'APA formatting & writing quality (incl. cover page)', max: 3,
+        hint: 'APA 7th edition style throughout; concise paragraphs (5\u20137 lines).' },
+      { name: 'Cohesion & integration across sections', max: 3,
+        hint: 'Sections read as one coherent proposal rather than disconnected pieces.' }
+    ],
+    assessmentOptions: [
+      { level: 'needs_improvement', emoji: '🔴', label: 'Needs Improvement',
+        text: 'The proposal demonstrates a developing understanding of the research process, but significant revision is needed before the study presents a complete and cohesive research plan. Focus on strengthening missing or underdeveloped sections and making sure the research question, literature, methodology, and discussion all address the same research problem.' },
+      { level: 'good', emoji: '🟡', label: 'Good',
+        text: 'The proposal demonstrates a solid understanding of the research process and includes the required components. Focused revisions to synthesis, methodology, alignment, limitations, implications, APA, and/or organization would strengthen the final product.' },
+      { level: 'excellent', emoji: '🟢', label: 'Excellent',
+        text: 'The proposal demonstrates a strong understanding of the research process and presents a clear, cohesive, and well-supported hypothetical study. The research problem, literature review, methodology, and discussion are logically aligned and demonstrate strong application to social work.' }
+    ]
+  },
+  {
+    id: 'presentation',
+    tabLabel: 'Presentation',
+    title: 'Proposal Presentation',
+    max: 10,
+    desc: 'Syllabus grading criteria, verbatim: presentation style/format, understanding of the topic, research of relevant information, and discussion & findings.',
+    criteria: [
+      { name: 'Presentation style and format (clarity & conciseness)', max: 1, hint: 'Max 5 slides, key points only, no full paragraphs.' },
+      { name: 'Understanding of topic & ability to convey it to others', max: 2, hint: 'Speaks to the work rather than reading from slides.' },
+      { name: 'Research of relevant information', max: 2, hint: 'Depth and relevance of the research presented.' },
+      { name: 'Discussion & findings (social work implications)', max: 5, hint: 'The heaviest-weighted criterion per the syllabus.' }
+    ],
+    assessmentOptions: [
+      { level: 'needs_improvement', emoji: '🔴', label: 'Needs Improvement',
+        text: 'Important components of the research proposal were missing, unclear, or insufficiently explained. Review the five required sections and make sure the audience can clearly understand the problem, existing research, proposed methodology, limitations, and importance to social work.' },
+      { level: 'good', emoji: '🟡', label: 'Good',
+        text: 'The presentation successfully covered the major components of the research proposal. Some areas could be more concise, clearly explained, or better connected to demonstrate how the pieces of the proposed study fit together.' },
+      { level: 'excellent', emoji: '🟢', label: 'Excellent',
+        text: 'The presentation clearly and concisely communicated all major components of the proposed research study. The slides were organized and readable, and the presenters demonstrated a strong understanding of the research rather than relying on text-heavy slides.' }
+    ]
+  },
+  {
+    id: 'participation',
+    tabLabel: 'Participation & Quizzes',
+    title: 'Class Participation, In-Class Activities & Mandatory Quizzes',
+    max: 5,
+    desc: 'Attendance, active participation in class discussions and activities, and completion of mandatory weekly quizzes.',
+    criteria: [
+      { name: 'Attendance & Preparedness', max: 1,
+        hint: 'Students are expected to attend class regularly and arrive prepared to participate. Up to two unexcused absences are permitted.',
+        customLevels: [
+          { value: 0, label: 'Does Not Meet Expectations', desc: 'Frequent absences and/or lack of preparation interfere with participation in the course.' },
+          { value: 1, label: 'Meets Expectations', desc: 'Attends class consistently, has no more than two unexcused absences, and comes prepared for class.' }
+        ]
+      },
+      { name: 'In-Class Activities', max: 1,
+        hint: 'Students are expected to participate in individual, small-group, and whole-class activities completed during class.',
+        customLevels: [
+          { value: 0, label: 'Does Not Meet Expectations', desc: 'Frequently does not participate in or complete assigned in-class activities.' },
+          { value: 1, label: 'Meets Expectations', desc: 'Consistently participates in and completes assigned in-class activities.' }
+        ]
+      },
+      { name: 'Mandatory Weekly Quizzes', max: 1,
+        hint: 'Mandatory quizzes are due weekly by 12:00 p.m. Wednesday.',
+        customLevels: [
+          { value: 0, label: 'Does Not Meet Expectations', desc: 'Frequently misses quizzes or does not complete them by the required deadline.' },
+          { value: 1, label: 'Meets Expectations', desc: 'Consistently completes mandatory weekly quizzes by the required deadline.' }
+        ]
+      },
+      { name: 'Class Discussion & Participation', max: 2,
+        hint: 'Participation includes contributing to discussions, asking or responding to questions, engaging with classmates, and demonstrating understanding of course readings and material.',
+        customLevels: [
+          { value: 0, label: 'Limited/No Participation', desc: 'Rarely participates or demonstrates limited engagement with class discussions and course material.' },
+          { value: 1, label: 'Satisfactory Participation', desc: 'Participates periodically and demonstrates a general understanding of the readings and course material.' },
+          { value: 2, label: 'Strong Participation', desc: 'Participates consistently and meaningfully, demonstrates understanding of the readings, contributes thoughtful ideas or questions, and respectfully engages with classmates\u2019 contributions.' }
+        ]
+      }
+    ]
+  }
+];
+
+const LEVELS = [
+  { label: 'Not Yet Evident', frac: 0 },
+  { label: 'Emerging', frac: 0.4 },
+  { label: 'Developing', frac: 0.65 },
+  { label: 'Proficient', frac: 0.85 },
+  { label: 'Exemplary', frac: 1 }
+];
+
+const CITI_MAX = 5; // pass/fail, mandatory
+
+// Weeks students can earn optional group-activity bonus points — tracked separately and never
+// added to the 100-point score, since it isn't awarded every week.
+const BONUS_WEEKS = ['9/2','9/9','9/16','9/23','9/30','10/7','10/14','10/21','10/28','11/4','11/11','11/18','12/2','12/9'];
+
+/* ---------- Class roster ----------
+   Starts empty so this works for any instructor's class size — add your students
+   using the "Manage class list" control above the roster table. */
+const STUDENTS = [];
+
+/* ---------- State ---------- */
+let scores = {}; // { critKey: number }
+let submissions = {}; // { sectionId: pasted text }
+let docImportStatus = {}; // { sectionId: { text, error } }
+let templates = {}; // { sectionId: reference template/exemplar text } — global, not per-student
+let templateDocStatus = {}; // { sectionId: { text, error } }
+let citiPass = false;
+// (per-student general note removed — feedback now lives per-section only, see notes_<sectionId>)
+let extraCredit = {}; // { sectionId: number } — lets a section's total exceed its max, to reach Honors
+let sectionTouched = {}; // { sectionId: true } — marks a section as actually graded (vs. never visited), so ungraded sections don't count as zero against the tier
+let assessmentChoice = {}; // { sectionId: 'needs_improvement' | 'good' | 'excellent' } — quick-pick overall assessment for sections that define assessmentOptions
+let groupBonus = {}; // { weekDate: points } — In-Class Group Work Activity bonus, tracked separately, never counted toward the 100-point score
+let activeTab = RUBRIC[0].id;
+let roster = []; // populated entirely through "Manage class list" — no pre-loaded students
+let loadedStudent = null; // name of student currently loaded into the editor
+
+function critKey(sectionId, idx){ return sectionId + '_' + idx; }
+
+/* ---------- Rendering ---------- */
+const tabsEl = document.getElementById('tabs');
+const panelEl = document.getElementById('panel');
+
+function renderTabs(){
+  tabsEl.innerHTML = '';
+  RUBRIC.forEach(sec => {
+    const t = document.createElement('div');
+    t.className = 'tab' + (sec.id === activeTab ? ' active' : '');
+    t.innerHTML = sec.tabLabel + ' <span class="pts">' + sec.max + 'pt</span>';
+    t.onclick = () => { activeTab = sec.id; renderTabs(); renderPanel(); };
+    tabsEl.appendChild(t);
+  });
+  const citiTab = document.createElement('div');
+  citiTab.className = 'tab' + (activeTab === 'citi' ? ' active' : '');
+  citiTab.innerHTML = 'CITI Training <span class="pts">5pt</span>';
+  citiTab.onclick = () => { activeTab = 'citi'; renderTabs(); renderPanel(); };
+  tabsEl.appendChild(citiTab);
+
+  const bonusTab = document.createElement('div');
+  bonusTab.className = 'tab' + (activeTab === 'bonus' ? ' active' : '');
+  bonusTab.innerHTML = '🏆 Group Bonus <span class="pts">extra</span>';
+  bonusTab.onclick = () => { activeTab = 'bonus'; renderTabs(); renderPanel(); };
+  tabsEl.appendChild(bonusTab);
+}
+
+function sectionTotal(sec){
+  let sum = 0;
+  sec.criteria.forEach((c, i) => { sum += (scores[critKey(sec.id, i)] || 0); });
+  sum += (extraCredit[sec.id] || 0);
+  return sum;
+}
+
+function renderPanel(){
+  if(activeTab === 'citi'){
+    panelEl.innerHTML = `
+      <h2>Human Research Protection — CITI Training</h2>
+      <p class="desc">Mandatory. Score of 80% or above on the CITI Social &amp; Behavioral Sciences module. Students cannot pass the course without this certificate.</p>
+      <div class="citi-row">
+        <input type="checkbox" id="citiCheck" ${citiPass ? 'checked' : ''}>
+        <label for="citiCheck" style="font-size:14px;">CITI certificate on file, scored 80% or above</label>
+      </div>
+      <div class="panel-foot">
+        <span class="total">Section total: ${citiPass ? CITI_MAX : 0} / ${CITI_MAX} pts</span>
+        <span class="grade-pill" style="background:${citiPass ? 'var(--good)1A' : '#EFEBE2'}; color:${citiPass ? 'var(--good)' : 'var(--ink-soft)'};">${citiPass ? 'Complete' : 'Incomplete'}</span>
+      </div>
+    `;
+    document.getElementById('citiCheck').onchange = (e) => { citiPass = e.target.checked; sectionTouched['citi'] = true; renderPanel(); updateGrandTotal(); };
+    return;
+  }
+
+  if(activeTab === 'bonus'){
+    const bonusTotal = BONUS_WEEKS.reduce((sum, wk) => sum + (groupBonus[wk] || 0), 0);
+    panelEl.innerHTML = `
+      <h2>In-Class Group Work Activity Bonus</h2>
+      <p class="desc">Optional bonus points for a group that wins or excels at an in-class activity that week. This is tracked separately and is <strong>never added to the 100-point proposal score</strong> — it's just here so the points are on record if you choose to award them. Leave any week blank if no bonus was given.</p>
+      <div class="bonus-grid">
+        ${BONUS_WEEKS.map(wk => `
+          <div class="bonus-row">
+            <label for="bonus_${wk}">Week of ${wk}</label>
+            <input type="number" id="bonus_${wk}" min="0" step="1" value="${groupBonus[wk] || ''}" placeholder="0">
+          </div>
+        `).join('')}
+      </div>
+      <div class="panel-foot">
+        <span class="total" id="bonusTotalLabel">Total group bonus: ${bonusTotal} pt${bonusTotal === 1 ? '' : 's'}</span>
+        <span class="grade-pill" style="background:#EFEBE2; color:var(--ink-soft);">not counted toward the 100-pt score</span>
+      </div>
+    `;
+    BONUS_WEEKS.forEach(wk => {
+      const inp = document.getElementById('bonus_' + wk);
+      inp.oninput = () => {
+        let v = parseFloat(inp.value);
+        if(isNaN(v) || v < 0) v = 0;
+        if(v === 0){ delete groupBonus[wk]; } else { groupBonus[wk] = v; }
+        const newTotal = BONUS_WEEKS.reduce((sum, w) => sum + (groupBonus[w] || 0), 0);
+        document.getElementById('bonusTotalLabel').textContent = `Total group bonus: ${newTotal} pt${newTotal === 1 ? '' : 's'}`;
+      };
+    });
+    return;
+  }
+
+  const sec = RUBRIC.find(s => s.id === activeTab);
+  let html = `<h2>${sec.title}</h2><p class="desc">${sec.desc}</p>`;
+
+  const templateText = templates[sec.id] || '';
+  const templateStatus = templateDocStatus[sec.id];
+  html += `
+    <details class="import-box template-box" ${templateText ? 'open' : ''}>
+      <summary>Reference template / exemplar for this section ${templateText ? '<span class="import-badge template-badge">loaded</span>' : '<span class="import-badge empty">none yet</span>'}</summary>
+      <p class="crit-hint" style="margin-top:10px;">Optional. Upload or paste the assignment template, instructions, or a model example for ${sec.tabLabel.toLowerCase()}. When you click "Suggest scores," Claude checks the student's text against this template's expected structure and headings, not just the rubric — useful for flagging when a student skipped a required part or reorganized the section.</p>
+      <div class="import-actions">
+        <label class="btn btn-ghost file-btn template-file-btn" for="templateFile_${sec.id}">📄 Upload template (.docx)</label>
+        <input type="file" id="templateFile_${sec.id}" accept=".docx" style="display:none">
+        ${templateText ? `<button type="button" class="del-btn" id="clearTemplate_${sec.id}">Clear template</button>` : ''}
+        ${templateStatus ? `<span class="import-file-status ${templateStatus.error ? 'error' : ''}">${templateStatus.text}</span>` : ''}
+      </div>
+      <textarea class="notes import-textarea template-textarea" id="template_${sec.id}" placeholder="Paste the assignment template, instructions, or a model example for ${sec.tabLabel.toLowerCase()} here, or upload a .docx above...">${templateText}</textarea>
+    </details>
+  `;
+
+  const subText = submissions[sec.id] || '';
+  const aiBusy = aiLoading[sec.id];
+  const docStatus = docImportStatus[sec.id];
+  html += `
+    <details class="import-box" ${subText ? 'open' : ''}>
+      <summary>Import student's ${sec.tabLabel.toLowerCase()} text ${subText ? '<span class="import-badge">pasted</span>' : '<span class="import-badge empty">none yet</span>'}</summary>
+      <p class="crit-hint" style="margin-top:10px;">Paste the student's writing below, or upload their Word document (.docx) to pull the text in automatically. This is kept with the student's record when you save them to the roster.</p>
+      <div class="import-actions">
+        <label class="btn btn-ghost file-btn" for="wordFile_${sec.id}">📄 Upload Word doc (.docx)</label>
+        <input type="file" id="wordFile_${sec.id}" accept=".docx" style="display:none">
+        ${docStatus ? `<span class="import-file-status ${docStatus.error ? 'error' : ''}">${docStatus.text}</span>` : ''}
+      </div>
+      <textarea class="notes import-textarea" id="import_${sec.id}" placeholder="Paste the student's ${sec.tabLabel.toLowerCase()} submission here, or upload a .docx above...">${subText}</textarea>
+      <div class="ai-row">
+        <button type="button" class="btn btn-ai" id="aiBtn_${sec.id}" ${!subText.trim() || aiBusy ? 'disabled' : ''}>
+          ${aiBusy ? 'Reading & scoring…' : '✦ Suggest scores from this text'}
+        </button>
+        <span class="ai-hint">Reads the criteria and gives a starting score + rationale per criterion — review and adjust before saving. Requires viewing this file inside Claude.ai's chat window with an internet connection; it won't work if the file is downloaded and opened on its own.</span>
+      </div>
+      ${aiError[sec.id] ? `<p class="ai-error">${aiError[sec.id]}</p>` : ''}
+    </details>
+  `;
+
+  sec.criteria.forEach((c, i) => {
+    const key = critKey(sec.id, i);
+    const current = scores[key] || 0;
+    const sugg = aiSuggestions[key];
+
+    if(c.customLevels){
+      html += `
+        <div class="criterion">
+          <div class="crit-top">
+            <span class="crit-name">${c.name} <span class="crit-points-badge">${c.max} Point${c.max === 1 ? '' : 's'}</span></span>
+            <span class="crit-max">${current} / ${c.max}</span>
+          </div>
+          <p class="crit-hint">${c.hint}</p>
+          <div class="custom-levels" data-key="${key}">
+            ${c.customLevels.map(lv => {
+              const sel = current === lv.value;
+              return `<label class="custom-level-row ${sel ? 'checked' : ''}" data-val="${lv.value}">
+                <span class="custom-level-radio">${sel ? '●' : '○'}</span>
+                <span class="custom-level-text"><strong>${lv.value} — ${escapeHtml(lv.label)}</strong><br>${escapeHtml(lv.desc)}</span>
+              </label>`;
+            }).join('')}
+          </div>
+          <div class="score-line">Score: <strong>${current}</strong> / ${c.max}</div>
+        </div>
+      `;
+      return;
+    }
+
+    html += `
+      <div class="criterion">
+        <div class="crit-top">
+          <span class="crit-name">${c.name}</span>
+          <span class="crit-max">${current} / ${c.max}</span>
+        </div>
+        <p class="crit-hint">${c.hint}</p>
+        ${sugg ? `<div class="ai-suggestion">
+          <span class="ai-suggestion-badge">✦ AI suggested ${sugg.score}/${c.max}</span>
+          <span class="ai-suggestion-text">${sugg.rationale}</span>
+          <button type="button" class="ai-apply" data-key="${key}" data-val="${sugg.score}">Apply</button>
+        </div>` : ''}
+        <div class="levels" data-key="${key}" data-max="${c.max}">
+          ${LEVELS.map(l => {
+            const val = Math.round(l.frac * c.max);
+            const sel = (current === val && !(current===0 && l.frac!==0 && val===0)) ? 'sel' : '';
+            return `<button type="button" class="level-btn ${current===val?'sel':''}" data-val="${val}">${l.label} · ${val}pt</button>`;
+          }).join('')}
+        </div>
+        <div class="score-row">
+          <input type="number" min="0" max="${c.max}" step="0.5" value="${current}" data-key="${key}">
+          <span class="of">/ ${c.max} pts (fine-tune manually)</span>
+        </div>
+      </div>
+    `;
+  });
+
+  const total = sectionTotal(sec);
+  const secTier = sectionGradeTier(total, sec.max);
+  const secColor = secTier.tier === 'good' ? (secTier.label === 'Honors' ? 'var(--purple)' : 'var(--good)') : 'var(--low)';
+  const ec = extraCredit[sec.id] || 0;
+  html += `
+    <div class="extra-credit-row">
+      <label for="extraCredit_${sec.id}">Extra credit</label>
+      <input type="number" id="extraCredit_${sec.id}" min="0" step="0.5" value="${ec}">
+      <span class="extra-credit-hint">Optional bonus points added on top of this section's normal score — can push the total above ${sec.max} pts for exceptional work beyond what the rubric asked for.</span>
+    </div>
+    <div class="panel-foot">
+      <span class="total">Section total: ${total} / ${sec.max} pts</span>
+      <span class="grade-pill" style="background:${secColor}1A; color:${secColor};">${secTier.label}</span>
+    </div>
+    ${sec.assessmentOptions ? `
+    <div class="assessment-box">
+      <p class="assessment-title">Overall Assessment:</p>
+      ${sec.assessmentOptions.map(opt => {
+        const checked = assessmentChoice[sec.id] === opt.level;
+        return `<label class="assessment-row ${checked ? 'checked' : ''}" data-level="${opt.level}">
+          <span class="assessment-checkbox">${checked ? '☑' : '☐'}</span>
+          <span class="assessment-emoji">${opt.emoji}</span>
+          <span class="assessment-text"><strong>${opt.label}</strong> — ${opt.text}</span>
+        </label>`;
+      }).join('')}
+      ${(sec.assessmentExtraFields || []).map(field => {
+        const fieldKey = `field_${sec.id}_${field.id}`;
+        const val = scores[fieldKey] || '';
+        return `<div class="assessment-extra-field">
+          <label for="${fieldKey}">${field.label}:</label>
+          <input type="text" id="${fieldKey}" data-key="${fieldKey}" value="${val.replace(/"/g, '&quot;')}" placeholder="Type here...">
+        </div>`;
+      }).join('')}
+    </div>
+    ` : ''}
+    <label for="notes_${sec.id}" class="instructor-feedback-label">Instructor Feedback</label>
+    <textarea class="notes" id="notes_${sec.id}" placeholder="Feedback specific to ${sec.title} — saved with this student and shown under this section's heading in their downloaded Word report...">${scores['notes_'+sec.id] || ''}</textarea>
+  `;
+
+  panelEl.innerHTML = html;
+
+  panelEl.querySelectorAll('.level-btn').forEach(btn => {
+    btn.onclick = () => {
+      const group = btn.closest('.levels');
+      const key = group.dataset.key;
+      scores[key] = parseFloat(btn.dataset.val);
+      sectionTouched[sec.id] = true;
+      renderPanel();
+      updateGrandTotal();
+    };
+  });
+  panelEl.querySelectorAll('.custom-level-row').forEach(row => {
+    row.onclick = () => {
+      const group = row.closest('.custom-levels');
+      const key = group.dataset.key;
+      scores[key] = parseFloat(row.dataset.val);
+      sectionTouched[sec.id] = true;
+      renderPanel();
+      updateGrandTotal();
+    };
+  });
+  panelEl.querySelectorAll('input[type=number]').forEach(inp => {
+    inp.oninput = () => {
+      const key = inp.dataset.key;
+      let v = parseFloat(inp.value);
+      const max = parseFloat(inp.max);
+      if(isNaN(v)) v = 0;
+      if(v > max) v = max;
+      if(v < 0) v = 0;
+      scores[key] = v;
+      sectionTouched[sec.id] = true;
+      updateGrandTotal();
+      const label = inp.closest('.criterion').querySelector('.crit-max');
+      label.textContent = v + ' / ' + max;
+    };
+  });
+  panelEl.querySelectorAll('.assessment-row').forEach(row => {
+    row.onclick = () => {
+      const level = row.dataset.level;
+      assessmentChoice[sec.id] = (assessmentChoice[sec.id] === level) ? null : level;
+      sectionTouched[sec.id] = true;
+      renderPanel();
+      updateGrandTotal();
+    };
+  });
+  panelEl.querySelectorAll('.assessment-extra-field input').forEach(inp => {
+    inp.oninput = () => {
+      scores[inp.dataset.key] = inp.value;
+      sectionTouched[sec.id] = true;
+    };
+  });
+  const notesEl = document.getElementById('notes_' + sec.id);
+  if(notesEl) notesEl.oninput = () => { scores['notes_'+sec.id] = notesEl.value; };
+  const extraCreditEl = document.getElementById('extraCredit_' + sec.id);
+  if(extraCreditEl) extraCreditEl.oninput = () => {
+    let v = parseFloat(extraCreditEl.value);
+    if(isNaN(v) || v < 0) v = 0;
+    extraCredit[sec.id] = v;
+    sectionTouched[sec.id] = true;
+    updateGrandTotal();
+    const panelFoot = panelEl.querySelector('.panel-foot .total');
+    const pill = panelEl.querySelector('.panel-foot .grade-pill');
+    const newTotal = sectionTotal(sec);
+    const newTier = sectionGradeTier(newTotal, sec.max);
+    const newColor = newTier.tier === 'good' ? (newTier.label === 'Honors' ? 'var(--purple)' : 'var(--good)') : 'var(--low)';
+    panelFoot.textContent = `Section total: ${newTotal} / ${sec.max} pts`;
+    pill.textContent = newTier.label;
+    pill.style.background = newColor + '1A';
+    pill.style.color = newColor;
+  };
+  const importEl = document.getElementById('import_' + sec.id);
+  if(importEl) importEl.oninput = () => {
+    submissions[sec.id] = importEl.value;
+    const btn = document.getElementById('aiBtn_' + sec.id);
+    if(btn) btn.disabled = !importEl.value.trim() || aiLoading[sec.id];
+    const summary = panelEl.querySelector('.import-box summary');
+    const badge = summary.querySelector('.import-badge');
+    if(importEl.value.trim()){ badge.textContent = 'pasted'; badge.classList.remove('empty'); }
+    else { badge.textContent = 'none yet'; badge.classList.add('empty'); }
+  };
+  const aiBtn = document.getElementById('aiBtn_' + sec.id);
+  if(aiBtn) aiBtn.onclick = () => suggestScores(sec);
+  const wordFileEl = document.getElementById('wordFile_' + sec.id);
+  if(wordFileEl) wordFileEl.onchange = (e) => handleWordImport(sec, e.target.files[0]);
+
+  const templateEl = document.getElementById('template_' + sec.id);
+  if(templateEl) templateEl.oninput = () => {
+    templates[sec.id] = templateEl.value;
+    const box = panelEl.querySelector('.template-box summary');
+    const badge = box.querySelector('.import-badge');
+    if(templateEl.value.trim()){ badge.textContent = 'loaded'; badge.classList.remove('empty'); badge.classList.add('template-badge'); }
+    else { badge.textContent = 'none yet'; badge.classList.add('empty'); badge.classList.remove('template-badge'); }
+    saveStateToStorage();
+  };
+  const templateFileEl = document.getElementById('templateFile_' + sec.id);
+  if(templateFileEl) templateFileEl.onchange = (e) => handleTemplateImport(sec, e.target.files[0]);
+  const clearTemplateBtn = document.getElementById('clearTemplate_' + sec.id);
+  if(clearTemplateBtn) clearTemplateBtn.onclick = () => {
+    templates[sec.id] = '';
+    templateDocStatus[sec.id] = null;
+    renderPanel();
+    saveStateToStorage();
+  };
+
+  panelEl.querySelectorAll('.ai-apply').forEach(btn => {
+    btn.onclick = () => {
+      scores[btn.dataset.key] = parseFloat(btn.dataset.val);
+      renderPanel();
+      updateGrandTotal();
+    };
+  });
+}
+
+async function handleWordImport(sec, file){
+  if(!file) return;
+  if(!file.name.toLowerCase().endsWith('.docx')){
+    docImportStatus[sec.id] = { text: 'Only .docx files are supported (not .doc).', error: true };
+    renderPanel();
+    return;
+  }
+  docImportStatus[sec.id] = { text: 'Reading ' + file.name + '…', error: false };
+  renderPanel();
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const result = await mammoth.extractRawText({ arrayBuffer });
+    const text = result.value.trim();
+    if(!text){ throw new Error('No readable text found in the document.'); }
+    submissions[sec.id] = text;
+    docImportStatus[sec.id] = { text: 'Imported from ' + file.name + ' (' + text.length.toLocaleString() + ' characters).', error: false };
+  } catch(err) {
+    docImportStatus[sec.id] = { text: 'Could not read that file (' + err.message + '). Try pasting the text instead.', error: true };
+  } finally {
+    renderPanel();
+    updateGrandTotal();
+  }
+}
+
+async function handleTemplateImport(sec, file){
+  if(!file) return;
+  if(!file.name.toLowerCase().endsWith('.docx')){
+    templateDocStatus[sec.id] = { text: 'Only .docx files are supported (not .doc).', error: true };
+    renderPanel();
+    return;
+  }
+  templateDocStatus[sec.id] = { text: 'Reading ' + file.name + '…', error: false };
+  renderPanel();
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const result = await mammoth.extractRawText({ arrayBuffer });
+    const text = result.value.trim();
+    if(!text){ throw new Error('No readable text found in the document.'); }
+    templates[sec.id] = text;
+    templateDocStatus[sec.id] = { text: 'Imported from ' + file.name + ' (' + text.length.toLocaleString() + ' characters).', error: false };
+  } catch(err) {
+    templateDocStatus[sec.id] = { text: 'Could not read that file (' + err.message + '). Try pasting the text instead.', error: true };
+  } finally {
+    renderPanel();
+    saveStateToStorage();
+  }
+}
+
+/* ---------- AI-assisted scoring ---------- */
+let aiLoading = {};   // { sectionId: bool }
+let aiError = {};     // { sectionId: string }
+let aiSuggestions = {}; // { critKey: { score, rationale } }
+
+async function suggestScores(sec){
+  const text = (submissions[sec.id] || '').trim();
+  if(!text) return;
+
+  aiLoading[sec.id] = true;
+  aiError[sec.id] = null;
+  renderPanel();
+
+  const criteriaList = sec.criteria.map((c, i) =>
+    `${i}. "${c.name}" (max ${c.max} pts) — ${c.hint}`
+  ).join('\n');
+
+  const templateText = (templates[sec.id] || '').trim();
+  const templateClause = templateText
+    ? ` You will also be given a reference template, assignment instructions, or model example for this section. Use it to check whether the student followed the expected structure, headings, and required elements — note any deviations or missing required parts in the rationale, and weigh that alongside content quality when scoring.`
+    : '';
+
+  const systemPrompt = `You are assisting a graduate social work research methods instructor in scoring one section of a student's research proposal against a rubric. You will be given the section's criteria (with point maximums) and the student's submitted text for that section.${templateClause} Score each criterion on its own merits, using the full range including partial credit — do not default to full marks. Respond with ONLY a raw JSON array, no markdown code fences, no preamble, no explanation outside the JSON. Each array element must be an object: {"index": <criterion index, integer>, "score": <number, may include .5, between 0 and the criterion's max>, "rationale": "<one concise sentence, under 25 words, specific to what the text does or doesn't do>"}.`;
+
+  const templateBlock = templateText
+    ? `\n\nReference template / instructions / model example for this section:\n"""\n${templateText}\n"""`
+    : '';
+
+  const userPrompt = `Section: ${sec.title}\nSection purpose: ${sec.desc}\n\nCriteria:\n${criteriaList}${templateBlock}\n\nStudent's submitted text for this section:\n"""\n${text}\n"""\n\nReturn the JSON array now.`;
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: "user", content: userPrompt }]
+      })
+    });
+    if(!response.ok){ throw new Error('Request failed (' + response.status + ')'); }
+    const data = await response.json();
+    const textBlock = (data.content || []).map(b => b.text || '').join('\n');
+    const cleaned = textBlock.replace(/```json/g, '').replace(/```/g, '').trim();
+    const parsed = JSON.parse(cleaned);
+
+    parsed.forEach(item => {
+      if(typeof item.index !== 'number') return;
+      const c = sec.criteria[item.index];
+      if(!c) return;
+      let score = parseFloat(item.score);
+      if(isNaN(score)) return;
+      score = Math.max(0, Math.min(c.max, score));
+      const key = critKey(sec.id, item.index);
+      aiSuggestions[key] = { score, rationale: item.rationale || '' };
+      scores[key] = score; // pre-fill; grader can still override manually
+      sectionTouched[sec.id] = true;
+    });
+  } catch(err) {
+    if(err instanceof TypeError && /fetch/i.test(err.message)){
+      aiError[sec.id] = 'Could not reach Claude — this usually means the file is being opened outside Claude.ai\'s chat window (e.g. downloaded and opened separately), or there\'s no internet connection right now. Reopen this file from within your Claude.ai conversation and try again. You can still score manually in the meantime.';
+    } else {
+      aiError[sec.id] = 'Could not get AI suggestions (' + err.message + '). You can still score manually.';
+    }
+  } finally {
+    aiLoading[sec.id] = false;
+    renderPanel();
+    updateGrandTotal();
+  }
+}
+
+const TIER_COLORS = { good: 'var(--good)', mid: 'var(--mid)', low: 'var(--low)' };
+
+function computeGrandTotal(){
+  let total = citiPass ? CITI_MAX : 0;
+  RUBRIC.forEach(sec => { total += sectionTotal(sec); });
+  return total;
+}
+
+function segColor(idx){
+  const palette = ['#6C2B7F','#8B4EA0','#1B2A4A','#3F7A5C','#B8863B','#4C6EAF','#A4452F','#7A5C3F'];
+  return palette[idx % palette.length];
+}
+
+function updateGrandTotal(){
+  const total = computeGrandTotal();
+  document.getElementById('grandTotal').innerHTML = total + '<span> / 100 pts</span>';
+
+  const prov = computeProvisionalTier(scores, citiPass, extraCredit, sectionTouched);
+  const tierEl = document.getElementById('currentTierPill');
+  if(tierEl){
+    const color = prov.tier.tier === 'good' ? (prov.tier.label === 'Honors' ? 'var(--purple)' : 'var(--good)') : (prov.tier.tier === 'low' ? 'var(--low)' : 'var(--ink-soft)');
+    const bg = prov.tier.tier === 'neutral' ? '#EFEBE2' : color + '1A';
+    tierEl.innerHTML = `<span class="grade-pill" style="background:${bg}; color:${color};">${prov.tier.label}</span>` +
+      (prov.gradedMax > 0 ? `<span class="in-progress-note">${prov.complete ? 'all sections graded' : `based on ${prov.gradedMax} of 100 possible pts graded so far — will update as you grade more`}</span>` : '');
+  }
+
+  const segbar = document.getElementById('segbar');
+  const legend = document.getElementById('segLegend');
+  segbar.innerHTML = '';
+  legend.innerHTML = '';
+
+  const allSections = RUBRIC.concat([{ id:'citi', tabLabel:'CITI Training', max: CITI_MAX }]);
+  allSections.forEach((sec, i) => {
+    const val = sec.id === 'citi' ? (citiPass ? CITI_MAX : 0) : sectionTotal(sec);
+    const widthPct = (sec.max / 100) * 100;
+    const fillPct = sec.max ? (val / sec.max) : 0;
+    const color = segColor(i);
+    const seg = document.createElement('div');
+    seg.className = 'seg';
+    seg.style.width = widthPct + '%';
+    seg.style.background = `linear-gradient(90deg, ${color} ${fillPct*100}%, #E8E3D8 ${fillPct*100}%)`;
+    segbar.appendChild(seg);
+
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.innerHTML = `<span class="dot" style="background:${color}"></span>${sec.tabLabel} (${val}/${sec.max})`;
+    legend.appendChild(item);
+  });
+}
+
+/* ---------- Roster ---------- */
+function gradeTier(total){
+  if(total >= 96) return { label: 'Honors', tier: 'good' };
+  if(total >= 40) return { label: 'Credit', tier: 'good' };
+  return { label: 'No Credit', tier: 'low' };
+}
+
+function sectionGradeTier(score, max){
+  const pct = max > 0 ? (score / max) * 100 : 0;
+  if(pct >= 96) return { label: 'Honors', tier: 'good' };
+  if(pct >= 40) return { label: 'Credit', tier: 'good' };
+  return { label: 'No Credit', tier: 'low' };
+}
+
+// Computes the overall tier from only the sections actually graded so far — ungraded sections
+// don't drag the tier down to "No Credit" the way treating them as zero would.
+function computeProvisionalTier(scoresObj, citiPassVal, extraCreditObj, touchedObj){
+  let gradedTotal = 0, gradedMax = 0;
+  RUBRIC.forEach(sec => {
+    if(touchedObj && touchedObj[sec.id]){
+      gradedMax += sec.max;
+      let s = 0;
+      sec.criteria.forEach((c, i) => { s += (scoresObj[critKey(sec.id, i)] || 0); });
+      s += ((extraCreditObj || {})[sec.id] || 0);
+      gradedTotal += s;
+    }
+  });
+  if(touchedObj && touchedObj['citi']){
+    gradedMax += CITI_MAX;
+    gradedTotal += (citiPassVal ? CITI_MAX : 0);
+  }
+  const pct = gradedMax > 0 ? (gradedTotal / gradedMax) * 100 : null;
+  let tier;
+  if(pct === null) tier = { label: 'Not yet graded', tier: 'neutral' };
+  else if(pct >= 96) tier = { label: 'Honors', tier: 'good' };
+  else if(pct >= 40) tier = { label: 'Credit', tier: 'good' };
+  else tier = { label: 'No Credit', tier: 'low' };
+  return { gradedTotal, gradedMax, pct, tier, complete: gradedMax >= 100 };
+}
+
+function renderRoster(){
+  const body = document.getElementById('rosterBody');
+  if(roster.length === 0){
+    body.innerHTML = '<tr class="empty-row"><td colspan="5">No students on the roster yet — use "Manage class list" above to add your first student.</td></tr>';
+  } else {
+    body.innerHTML = roster.map((r, idx) => {
+      const graded = r.total !== null && r.total !== undefined;
+      const prov = graded && r.breakdown ? computeProvisionalTier(r.breakdown.scores, r.breakdown.citiPass, r.breakdown.extraCredit, r.breakdown.sectionTouched) : null;
+      const color = !prov ? 'var(--ink-soft)' : (prov.tier.tier === 'good' ? (prov.tier.label === 'Honors' ? 'var(--purple)' : 'var(--good)') : (prov.tier.tier === 'low' ? 'var(--low)' : 'var(--ink-soft)'));
+      const isLoaded = loadedStudent === r.name;
+      const bonusTotal = r.breakdown && r.breakdown.groupBonus ? BONUS_WEEKS.reduce((sum, wk) => sum + (r.breakdown.groupBonus[wk] || 0), 0) : 0;
+      return `<tr style="${isLoaded ? 'background:#F5EEFA;' : ''}">
+        <td>${r.name}${isLoaded ? ' <span style="font-size:10px; color:var(--purple); font-weight:700;">· EDITING</span>' : ''}</td>
+        <td>${r.group || '—'}</td>
+        <td>${graded
+          ? `<button class="score-link" data-idx="${idx}" title="Click to reopen and edit this student's scores" style="font-family:'IBM Plex Mono',monospace; font-size:13.5px; background:none; border:none; color:var(--navy); font-weight:700; cursor:pointer; text-decoration:underline dotted; padding:0;">${r.total} / ${prov && !prov.complete ? prov.gradedMax : 100}${prov && !prov.complete ? ' (of 100)' : ''}</button>${bonusTotal > 0 ? `<div style="font-size:10.5px; color:var(--mid); margin-top:2px;">🏆 +${bonusTotal} group bonus</div>` : ''}`
+          : '<span style="font-family:\'IBM Plex Mono\',monospace; color:var(--ink-soft);">—</span>'}</td>
+        <td>${graded && prov
+          ? `<span class="grade-pill" style="background:${color}1A; color:${color};">${prov.tier.label}</span>${!prov.complete ? '<div class="in-progress-note" style="margin-top:3px;">in progress</div>' : ''}`
+          : `<span class="grade-pill" style="background:#EFEBE2; color:var(--ink-soft);">Not yet graded</span>`}</td>
+        <td>${graded ? `<button class="report-btn" data-idx="${idx}">📄 Word report</button><button class="clear-btn" data-idx="${idx}" data-action="clear">Clear score</button>` : ''}<button class="del-btn" data-idx="${idx}" data-action="remove">Remove</button></td>
+      </tr>`;
+    }).join('');
+  }
+  body.querySelectorAll('.del-btn, .clear-btn').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.dataset.idx);
+      const action = btn.dataset.action;
+      if(loadedStudent === roster[idx].name) loadedStudent = null;
+      if(action === 'clear'){
+        roster[idx].total = null;
+        roster[idx].breakdown = null;
+      } else {
+        roster.splice(idx, 1);
+      }
+      renderRoster();
+    };
+  });
+  body.querySelectorAll('.report-btn').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.dataset.idx);
+      downloadWordReport(roster[idx]);
+    };
+  });
+  body.querySelectorAll('.score-link').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.dataset.idx);
+      const r = roster[idx];
+      if(!r.breakdown) return;
+      scores = JSON.parse(JSON.stringify(r.breakdown.scores));
+      submissions = JSON.parse(JSON.stringify(r.breakdown.submissions || {}));
+      aiSuggestions = JSON.parse(JSON.stringify(r.breakdown.aiSuggestions || {}));
+      citiPass = r.breakdown.citiPass;
+      extraCredit = JSON.parse(JSON.stringify(r.breakdown.extraCredit || {}));
+      sectionTouched = JSON.parse(JSON.stringify(r.breakdown.sectionTouched || {}));
+      assessmentChoice = JSON.parse(JSON.stringify(r.breakdown.assessmentChoice || {}));
+      groupBonus = JSON.parse(JSON.stringify(r.breakdown.groupBonus || {}));
+      docImportStatus = {};
+      loadedStudent = r.name;
+      document.getElementById('studentName').value = r.name;
+      document.getElementById('studentGroup').value = r.group || '';
+      activeTab = RUBRIC[0].id;
+      renderTabs();
+      renderPanel();
+      updateGrandTotal();
+      renderRoster();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  });
+  const gradedCount = roster.filter(r => r.total !== null && r.total !== undefined).length;
+  document.getElementById('rosterProgress').textContent = `${gradedCount} of ${roster.length} students graded`;
+  saveStateToStorage();
+}
+
+function populateDatalist(){
+  const dl = document.getElementById('studentList');
+  dl.innerHTML = roster.map(s => `<option value="${s.name}">`).join('');
+}
+
+document.getElementById('studentName').addEventListener('input', (e) => {
+  const match = roster.find(s => s.name.toLowerCase() === e.target.value.trim().toLowerCase());
+  if(match){ document.getElementById('studentGroup').value = match.group; }
+});
+
+document.getElementById('saveBtn').onclick = () => {
+  const name = document.getElementById('studentName').value.trim();
+  if(!name){ document.getElementById('studentName').focus(); return; }
+  const group = document.getElementById('studentGroup').value;
+  const total = computeGrandTotal();
+  const breakdown = { scores: JSON.parse(JSON.stringify(scores)), submissions: JSON.parse(JSON.stringify(submissions)), aiSuggestions: JSON.parse(JSON.stringify(aiSuggestions)), citiPass: citiPass, extraCredit: JSON.parse(JSON.stringify(extraCredit)), sectionTouched: JSON.parse(JSON.stringify(sectionTouched)), assessmentChoice: JSON.parse(JSON.stringify(assessmentChoice)), groupBonus: JSON.parse(JSON.stringify(groupBonus)) };
+  const existingIdx = roster.findIndex(r => r.name.toLowerCase() === name.toLowerCase());
+  if(existingIdx >= 0){
+    roster[existingIdx].total = total;
+    roster[existingIdx].breakdown = breakdown;
+    if(group) roster[existingIdx].group = group;
+  } else {
+    roster.push({ name, group, total, breakdown });
+  }
+  renderRoster();
+
+  // Reset the editor so the next student starts from a clean slate — otherwise this student's
+  // scores would still be sitting here when you pick the next name from the dropdown.
+  loadedStudent = null;
+  scores = {};
+  submissions = {};
+  aiSuggestions = {};
+  aiError = {};
+  docImportStatus = {};
+  citiPass = false;
+  extraCredit = {};
+  sectionTouched = {};
+  assessmentChoice = {};
+  const nameField = document.getElementById('studentName');
+  nameField.value = '';
+  document.getElementById('studentGroup').value = '';
+  activeTab = RUBRIC[0].id;
+  renderTabs();
+  renderPanel();
+  updateGrandTotal();
+  nameField.focus();
+};
+
+document.getElementById('resetBtn').onclick = () => {
+  if(loadedStudent){
+    const idx = roster.findIndex(r => r.name === loadedStudent);
+    if(idx >= 0){
+      roster[idx].total = null;
+      roster[idx].breakdown = null;
+    }
+  }
+  scores = {};
+  submissions = {};
+  aiSuggestions = {};
+  aiError = {};
+  docImportStatus = {};
+  citiPass = false;
+  extraCredit = {};
+  sectionTouched = {};
+  assessmentChoice = {};
+  groupBonus = {};
+  loadedStudent = null;
+  document.getElementById('studentName').value = '';
+  document.getElementById('studentGroup').value = '';
+  renderPanel();
+  updateGrandTotal();
+  renderRoster();
+};
+
+function sectionScoreFromBreakdown(scoresObj, sec, extraCreditObj){
+  let sum = 0;
+  sec.criteria.forEach((c, i) => { sum += (scoresObj[critKey(sec.id, i)] || 0); });
+  sum += ((extraCreditObj || {})[sec.id] || 0);
+  return sum;
+}
+
+function escapeHtml(str){
+  return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
+}
+
+function downloadWordReport(student){
+  if(!student.breakdown) return;
+  const b = student.breakdown;
+  const prov = computeProvisionalTier(b.scores, b.citiPass, b.extraCredit, b.sectionTouched);
+  const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  let summaryRows = '';
+  RUBRIC.forEach(sec => {
+    const secScore = sectionScoreFromBreakdown(b.scores, sec, b.extraCredit);
+    const secTier = sectionGradeTier(secScore, sec.max);
+    summaryRows += `<tr><td>${sec.title}</td><td style="text-align:center;">${secScore} / ${sec.max}</td><td style="text-align:center;">${secTier.label}</td></tr>`;
+  });
+  summaryRows += `<tr><td>CITI Human Research Protection Training</td><td style="text-align:center;">${b.citiPass ? CITI_MAX : 0} / ${CITI_MAX}</td><td style="text-align:center;">${b.citiPass ? 'Complete' : 'Incomplete'}</td></tr>`;
+
+  let sectionsHtml = '';
+  RUBRIC.forEach(sec => {
+    const secScore = sectionScoreFromBreakdown(b.scores, sec, b.extraCredit);
+    const secTier = sectionGradeTier(secScore, sec.max);
+    let criteriaHtml = '';
+    sec.criteria.forEach((c, i) => {
+      const key = critKey(sec.id, i);
+      const score = b.scores[key] || 0;
+      const sugg = (b.aiSuggestions || {})[key];
+      criteriaHtml += `<li style="margin-bottom:8px;"><strong>${escapeHtml(c.name)}</strong> — ${score} / ${c.max} pts`;
+      if(c.customLevels){
+        const matched = c.customLevels.find(lv => lv.value === score);
+        if(matched){
+          criteriaHtml += `<br/><span style="font-size:10pt;">(${matched.value} — ${escapeHtml(matched.label)})</span>`;
+        }
+      }
+      if(sugg && sugg.rationale){
+        criteriaHtml += `<br/><span style="color:#5C6577; font-size:10pt;"><em>Note: ${escapeHtml(sugg.rationale)}</em></span>`;
+      }
+      criteriaHtml += `</li>`;
+    });
+    const notes = b.scores['notes_' + sec.id];
+    const ec = (b.extraCredit || {})[sec.id] || 0;
+    const chosenLevel = (b.assessmentChoice || {})[sec.id];
+    let assessmentHtml = '';
+    if(sec.assessmentOptions){
+      const tierColors = { needs_improvement: '#A4452F', good: '#B8863B', excellent: '#3F7A5C' };
+      const tierBg = { needs_improvement: '#FBEDE9', good: '#FBF3E2', excellent: '#EAF3ED' };
+      const rows = sec.assessmentOptions.map(opt => {
+        const isChecked = chosenLevel === opt.level;
+        const color = tierColors[opt.level] || '#5C6577';
+        const bg = isChecked ? (tierBg[opt.level] || '#F5EEFA') : 'transparent';
+        const borderWeight = isChecked ? '4px' : '1px';
+        return `<p style="margin:6px 0; padding:8px 10px; background:${bg}; border-left:${borderWeight} solid ${color};">
+          <span style="color:${color}; font-weight:700;">${isChecked ? '☑' : '☐'} ${opt.emoji} ${escapeHtml(opt.label)}</span>
+          ${isChecked ? `<span style="color:${color};"> — ${escapeHtml(opt.text)}</span>` : `<span style="color:#8C96B0;"> — ${escapeHtml(opt.text)}</span>`}
+        </p>`;
+      }).join('');
+      const extraFieldsHtml = (sec.assessmentExtraFields || []).map(field => {
+        const val = b.scores[`field_${sec.id}_${field.id}`] || '';
+        return `<p><strong>${escapeHtml(field.label)}:</strong> ${val ? escapeHtml(val) : '<em>(not filled in)</em>'}</p>`;
+      }).join('');
+      assessmentHtml = `<p><strong>Instructor Feedback: ${escapeHtml(sec.title)}</strong></p><p><em>Overall Assessment:</em></p>${rows}${extraFieldsHtml}`;
+    }
+    sectionsHtml += `
+      <h3 style="color:#6C2B7F; margin-bottom:4px;">${escapeHtml(sec.title)} — ${secScore} / ${sec.max} pts (${secTier.label})</h3>
+      <ul style="margin-top:6px;">${criteriaHtml}</ul>
+      ${ec > 0 ? `<p><strong>Extra credit awarded:</strong> +${ec} pts</p>` : ''}
+      ${assessmentHtml}
+      ${notes ? `<p>${sec.assessmentOptions ? '<strong>Additional Instructor Feedback:</strong>' : `<strong>Instructor Feedback: ${escapeHtml(sec.title)}</strong>`}<br/>${escapeHtml(notes)}</p>` : ''}
+    `;
+  });
+
+  const bodyHtml = `
+    <h1 style="color:#1B2A4A; margin-bottom:2px;">${escapeHtml(courseInfo.title || 'Research Proposal Grading Report')}</h1>
+    <p style="color:#5C6577; margin-top:0;">${escapeHtml(courseInfo.instructor || '')}${courseInfo.instructor ? ' · ' : ''}${escapeHtml(courseInfo.semester)} Semester${courseInfo.section ? ' · Section ' + escapeHtml(courseInfo.section) : ''}</p>
+    <table style="width:100%; margin-bottom:16px;">
+      <tr><td><strong>Student:</strong></td><td>${escapeHtml(student.name)}</td></tr>
+      <tr><td><strong>Presentation group:</strong></td><td>${escapeHtml(student.group || '—')}</td></tr>
+      <tr><td><strong>Date:</strong></td><td>${today}</td></tr>
+    </table>
+
+    <h2 style="color:#1B2A4A; border-bottom:1px solid #DEDAD1; padding-bottom:4px;">Score Summary</h2>
+    <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%; margin-bottom:10px;">
+      <tr style="background:#1B2A4A; color:#ffffff;"><th style="text-align:left;">Component</th><th style="text-align:center;">Score</th><th style="text-align:center;">Tier</th></tr>
+      ${summaryRows}
+      <tr style="background:#F5EEFA;"><td><strong>Total${prov.complete ? '' : ' (in progress)'}</strong></td><td style="text-align:center;" colspan="2"><strong>${student.total} / ${prov.complete ? 100 : prov.gradedMax}${prov.complete ? '' : ' of 100 possible'} — ${prov.tier.label}</strong></td></tr>
+      ${!prov.complete ? `<tr><td colspan="3" style="font-size:9.5pt; color:#5C6577; font-style:italic;">This is a provisional grade based only on the sections graded so far (${prov.gradedMax} of 100 possible points). Ungraded sections are not counted against the student.</td></tr>` : ''}
+    </table>
+
+    <h2 style="color:#1B2A4A; border-bottom:1px solid #DEDAD1; padding-bottom:4px; margin-top:24px;">Detailed Scoring</h2>
+    ${sectionsHtml}
+
+    ${(() => {
+      const gb = b.groupBonus || {};
+      const bonusTotal = BONUS_WEEKS.reduce((sum, wk) => sum + (gb[wk] || 0), 0);
+      if(bonusTotal === 0) return '';
+      const rows = BONUS_WEEKS.filter(wk => gb[wk]).map(wk => `<li>Week of ${wk}: +${gb[wk]} pt${gb[wk] === 1 ? '' : 's'}</li>`).join('');
+      return `<h2 style="color:#1B2A4A; border-bottom:1px solid #DEDAD1; padding-bottom:4px; margin-top:24px;">In-Class Group Work Activity Bonus</h2>
+        <p style="font-size:9.5pt; color:#5C6577; font-style:italic;">Not included in the 100-point proposal score above.</p>
+        <ul>${rows}</ul>
+        <p><strong>Total group bonus: ${bonusTotal} pt${bonusTotal === 1 ? '' : 's'}</strong></p>`;
+    })()}
+
+    <p style="color:#9AA0AC; font-size:9pt; margin-top:28px; border-top:1px solid #E8E3D8; padding-top:8px;">Rubric application developed by Sabretta Alford, Ph.D., MPhil, LMSW (InsightBridge LLC©, sabrettaalford.com).</p>
+  `;
+
+  const fullHtml = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head><meta charset='utf-8'><title>${escapeHtml(student.name)} — Grading Report</title>
+<style>
+  body{font-family:Calibri, Arial, sans-serif; font-size:11pt; color:#242B38; line-height:1.5;}
+  table{border-collapse:collapse;}
+  td, th{padding:6px;}
+</style>
+</head><body>${bodyHtml}</body></html>`;
+
+  const blob = new Blob(['\ufeff', fullHtml], { type: 'application/msword' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = student.name.replace(/[^a-z0-9]+/gi, '_') + '_grading_report.doc';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function exportRosterCsv(){
+  if(roster.length === 0) return;
+  let csv = 'Student,Group,Points Graded,Points Possible So Far,Grade Tier,Status\n';
+  roster.forEach(r => {
+    const graded = r.total !== null && r.total !== undefined;
+    const prov = graded && r.breakdown ? computeProvisionalTier(r.breakdown.scores, r.breakdown.citiPass, r.breakdown.extraCredit, r.breakdown.sectionTouched) : null;
+    csv += `"${r.name}","${r.group||''}",${graded ? r.total : ''},${prov ? prov.gradedMax : ''},"${prov ? prov.tier.label : 'Not yet graded'}","${prov ? (prov.complete ? 'Complete' : 'In progress') : ''}"\n`;
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ssw75100_grading_roster.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById('exportBtn').onclick = exportRosterCsv;
+document.getElementById('exportRosterBtnBottom').onclick = exportRosterCsv;
+
+document.getElementById('manageRosterBtn').onclick = () => {
+  const box = document.getElementById('manageRosterBox');
+  const isHidden = box.style.display === 'none';
+  box.style.display = isHidden ? 'block' : 'none';
+  if(isHidden) document.getElementById('newStudentName').focus();
+};
+
+document.getElementById('addStudentBtn').onclick = () => {
+  const nameInput = document.getElementById('newStudentName');
+  const groupSelect = document.getElementById('newStudentGroup');
+  const name = nameInput.value.trim();
+  if(!name){ nameInput.focus(); return; }
+  const exists = roster.some(r => r.name.toLowerCase() === name.toLowerCase());
+  if(exists){ alert(name + ' is already on the class list.'); return; }
+  roster.push({ name, group: groupSelect.value, total: null, breakdown: null });
+  populateDatalist();
+  renderRoster();
+  nameInput.value = '';
+  groupSelect.value = '';
+  nameInput.focus();
+};
+
+/* ---------- Roster import (CSV/XLSX upload or pasted list) ---------- */
+function addStudentsToRoster(entries){
+  // entries: [{ name, group }]
+  let added = 0, skipped = 0;
+  entries.forEach(entry => {
+    const name = (entry.name || '').trim();
+    if(!name) return;
+    const exists = roster.some(r => r.name.toLowerCase() === name.toLowerCase());
+    if(exists){ skipped++; return; }
+    roster.push({ name, group: entry.group || '', total: null, breakdown: null });
+    added++;
+  });
+  populateDatalist();
+  renderRoster();
+  return { added, skipped };
+}
+
+function parsePastedRoster(text){
+  return text.split('\n').map(line => line.trim()).filter(Boolean).map(line => {
+    const parts = line.split(',');
+    const name = (parts[0] || '').trim();
+    const group = (parts[1] || '').trim();
+    return { name, group };
+  });
+}
+
+function toggleImportRosterBox(){
+  const box = document.getElementById('importRosterBox');
+  const isHidden = box.style.display === 'none';
+  box.style.display = isHidden ? 'block' : 'none';
+  if(isHidden) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+document.getElementById('importRosterBtn').onclick = toggleImportRosterBox;
+document.getElementById('importRosterBtnTop').onclick = toggleImportRosterBox;
+
+document.getElementById('clearRosterBtn').onclick = () => {
+  if(roster.length === 0) return;
+  const gradedCount = roster.filter(r => r.total !== null && r.total !== undefined).length;
+  const warning = gradedCount > 0
+    ? `This will permanently remove all ${roster.length} students from the roster, including ${gradedCount} with recorded scores. This cannot be undone. Continue?`
+    : `This will permanently remove all ${roster.length} students from the roster. This cannot be undone. Continue?`;
+  if(!confirm(warning)) return;
+  roster = [];
+  loadedStudent = null;
+  scores = {};
+  submissions = {};
+  aiSuggestions = {};
+  aiError = {};
+  docImportStatus = {};
+  citiPass = false;
+  extraCredit = {};
+  sectionTouched = {};
+  assessmentChoice = {};
+  document.getElementById('studentName').value = '';
+  document.getElementById('studentGroup').value = '';
+  renderPanel();
+  updateGrandTotal();
+  populateDatalist();
+  renderRoster();
+};
+
+document.getElementById('importPastedRosterBtn').onclick = () => {
+  const textarea = document.getElementById('rosterPasteBox');
+  const entries = parsePastedRoster(textarea.value);
+  if(entries.length === 0) return;
+  const result = addStudentsToRoster(entries);
+  document.getElementById('rosterFileStatus').textContent =
+    `Added ${result.added} student${result.added === 1 ? '' : 's'}${result.skipped ? `, skipped ${result.skipped} already on the list` : ''}.`;
+  textarea.value = '';
+};
+
+document.getElementById('rosterFileInput').onchange = async (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const statusEl = document.getElementById('rosterFileStatus');
+  statusEl.textContent = 'Reading ' + file.name + '…';
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(firstSheet, { defval: '' });
+    if(rows.length === 0){ throw new Error('No rows found in the file.'); }
+
+    // Figure out which columns hold the name (and group, if present) by matching common header names.
+    const headers = Object.keys(rows[0]);
+    const findHeader = (candidates) => headers.find(h => candidates.includes(h.trim().toLowerCase()));
+    const firstNameCol = findHeader(['first name', 'firstname', 'given name']);
+    const lastNameCol = findHeader(['last name', 'lastname', 'surname', 'family name']);
+    const singleNameCol = findHeader(['name', 'full name', 'student', 'student name']);
+    const groupCol = findHeader(['group', 'presentation group', 'section group', 'team']);
+
+    const entries = rows.map(row => {
+      let name = '';
+      if(firstNameCol && lastNameCol){
+        name = `${row[firstNameCol] || ''} ${row[lastNameCol] || ''}`.trim();
+      } else if(singleNameCol){
+        name = String(row[singleNameCol] || '').trim();
+      } else {
+        // Fall back to the first column in the sheet.
+        name = String(row[headers[0]] || '').trim();
+      }
+      const group = groupCol ? String(row[groupCol] || '').trim() : '';
+      return { name, group };
+    }).filter(e => e.name);
+
+    if(entries.length === 0){ throw new Error('Could not find a name column in that file.'); }
+    const result = addStudentsToRoster(entries);
+    statusEl.textContent = `Imported from ${file.name}: added ${result.added} student${result.added === 1 ? '' : 's'}${result.skipped ? `, skipped ${result.skipped} already on the list` : ''}.`;
+  } catch(err) {
+    statusEl.textContent = 'Could not read that file (' + err.message + '). Try a .csv or .xlsx export of your roster, or paste names instead.';
+  }
+};
+
+/* ---------- Header fields (course title, instructor, semester, section) ---------- */
+let courseInfo = {
+  title: 'SSW75100 — Research Proposal Grading Rubric',
+  instructor: 'Sabretta G. Alford, Ph.D., MPhil, LMSW',
+  semester: 'Fall',
+  section: '1'
+};
+
+function populateSectionSelect(){
+  const sel = document.getElementById('sectionSelect');
+  let opts = '';
+  for(let i = 1; i <= 30; i++){
+    opts += `<option value="${i}" ${String(i) === courseInfo.section ? 'selected' : ''}>Section ${i}</option>`;
+  }
+  sel.innerHTML = opts;
+}
+
+function updatePageTitle(){
+  document.title = (courseInfo.title || 'Grading Rubric') + (courseInfo.instructor ? ' — ' + courseInfo.instructor : '');
+}
+
+document.getElementById('courseTitleInput').addEventListener('input', (e) => {
+  courseInfo.title = e.target.value;
+  updatePageTitle();
+});
+document.getElementById('instructorNameInput').addEventListener('input', (e) => {
+  courseInfo.instructor = e.target.value;
+  updatePageTitle();
+});
+document.getElementById('semesterSelect').addEventListener('change', (e) => {
+  courseInfo.semester = e.target.value;
+  saveStateToStorage();
+});
+document.getElementById('sectionSelect').addEventListener('change', (e) => {
+  courseInfo.section = e.target.value;
+  saveStateToStorage();
+});
+document.getElementById('courseTitleInput').addEventListener('change', saveStateToStorage);
+document.getElementById('instructorNameInput').addEventListener('change', saveStateToStorage);
+
+/* ---------- Persistence (browser localStorage — keeps your roster and scores between sessions on this device/browser) ---------- */
+const STORAGE_KEY = 'ssw_research_rubric_autosave_v1';
+
+function saveStateToStorage(){
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ roster, courseInfo, templates }));
+  } catch(e) {
+    // Storage full, disabled, or unavailable (e.g. private browsing) — grading still works, just won't persist.
+  }
+}
+
+function loadStateFromStorage(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return false;
+    const data = JSON.parse(raw);
+    if(Array.isArray(data.roster)) roster = data.roster;
+    if(data.courseInfo) Object.assign(courseInfo, data.courseInfo);
+    if(data.templates) templates = data.templates;
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+/* ---------- Save to / load from a file on your computer ---------- */
+function buildSaveFileName(){
+  const safeTitle = (courseInfo.title || 'grading-rubric').replace(/[^a-z0-9]+/gi, '_').replace(/^_+|_+$/g, '');
+  const now = new Date();
+  const dateStamp = now.toISOString().slice(0, 10);
+  const timeStamp = now.toTimeString().slice(0, 5).replace(':', '');
+  return `${safeTitle}_backup_${dateStamp}_${timeStamp}.json`;
+}
+
+document.getElementById('saveToFileBtn').onclick = async () => {
+  const suggested = buildSaveFileName();
+  const payload = { savedAt: new Date().toISOString(), roster, courseInfo, templates };
+  const jsonText = JSON.stringify(payload, null, 2);
+  const statusEl = document.getElementById('saveFileStatus');
+
+  // Modern Chrome/Edge: real native "Save As" dialog — lets you pick the exact folder.
+  if(window.showSaveFilePicker){
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: suggested,
+        types: [{ description: 'Rubric backup (JSON)', accept: { 'application/json': ['.json'] } }]
+      });
+      const writable = await handle.createWritable();
+      await writable.write(jsonText);
+      await writable.close();
+      statusEl.textContent = `Saved as "${handle.name}" in the folder you chose.`;
+    } catch(err) {
+      if(err.name !== 'AbortError'){
+        statusEl.textContent = 'Could not save the file (' + err.message + ').';
+      }
+      // AbortError just means the person cancelled the dialog — do nothing.
+    }
+    return;
+  }
+
+  // Fallback for browsers without that dialog (Firefox, Safari): rename via prompt,
+  // then it downloads to your browser's normal download location.
+  const chosen = prompt('Save as (you can rename this so it\'s easy to find later). This browser will save it to your usual Downloads folder — check your browser\'s download settings if you want to choose the folder each time:', suggested);
+  if(chosen === null) return; // cancelled
+  let fileName = chosen.trim() || suggested;
+  if(!fileName.toLowerCase().endsWith('.json')) fileName += '.json';
+
+  const blob = new Blob([jsonText], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  statusEl.textContent = `Saved as "${fileName}" — check your Downloads folder (or wherever your browser saves files).`;
+};
+
+document.getElementById('loadFromFileBtn').onclick = () => {
+  document.getElementById('loadFromFileInput').click();
+};
+
+document.getElementById('loadFromFileInput').onchange = async (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const statusEl = document.getElementById('saveFileStatus');
+  const proceed = roster.length === 0 || confirm(
+    `Loading this file will replace your current roster (${roster.length} student${roster.length === 1 ? '' : 's'}) and course info. This cannot be undone. Continue?`
+  );
+  if(!proceed){ e.target.value = ''; return; }
+  try {
+    const text = await file.text();
+    const data = JSON.parse(text);
+    if(!Array.isArray(data.roster)) throw new Error('This doesn\'t look like a saved rubric file.');
+    roster = data.roster;
+    if(data.courseInfo) Object.assign(courseInfo, data.courseInfo);
+    if(data.templates) templates = data.templates;
+    loadedStudent = null;
+    scores = {}; submissions = {}; aiSuggestions = {}; aiError = {}; docImportStatus = {};
+    citiPass = false; extraCredit = {}; sectionTouched = {}; assessmentChoice = {};
+    document.getElementById('studentName').value = '';
+    document.getElementById('studentGroup').value = '';
+    document.getElementById('courseTitleInput').value = courseInfo.title;
+    document.getElementById('instructorNameInput').value = courseInfo.instructor;
+    document.getElementById('semesterSelect').value = courseInfo.semester;
+    populateSectionSelect();
+    updatePageTitle();
+    renderPanel();
+    updateGrandTotal();
+    populateDatalist();
+    renderRoster();
+    saveStateToStorage();
+    statusEl.textContent = `Loaded ${roster.length} student${roster.length === 1 ? '' : 's'} from ${file.name}.`;
+  } catch(err) {
+    statusEl.textContent = 'Could not read that file (' + err.message + '). Make sure it\'s a .json file saved from "Save as file" in this tool.';
+  } finally {
+    e.target.value = '';
+  }
+};
+
+/* ---------- Init ---------- */
+loadStateFromStorage();
+renderTabs();
+renderPanel();
+updateGrandTotal();
+populateDatalist();
+renderRoster();
+populateSectionSelect();
+updatePageTitle();
+document.getElementById('courseTitleInput').value = courseInfo.title;
+document.getElementById('instructorNameInput').value = courseInfo.instructor;
+document.getElementById('semesterSelect').value = courseInfo.semester;
+</script>
+</body>
+</html>
